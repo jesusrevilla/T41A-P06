@@ -1,4 +1,4 @@
--- Crear tabla clientes con los distintos tipos de datos
+
 CREATE TABLE clientes (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,

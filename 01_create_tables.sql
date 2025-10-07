@@ -1,5 +1,7 @@
-INSERT INTO clientes (nombre, fecha_registro, activo, saldo)
-VALUES 
-('Juan Pérez', '2025-10-01', TRUE, 1500.75),
-('María López', '2025-09-28', TRUE, 2300.50),
-('Carlos Ruiz', '2025-09-15', FALSE, 500.00);
+CREATE TABLE clientes (
+    id SERIAL PRIMARY KEY,                      -- entero autoincremental
+    nombre VARCHAR(100) NOT NULL,               -- texto de hasta 100 caracteres
+    fecha_registro DATE NOT NULL,               -- fecha de registro
+    activo BOOLEAN NOT NULL,                    -- valor verdadero/falso
+    saldo DECIMAL(10, 2) NOT NULL               -- número decimal con precisión 10,2
+);

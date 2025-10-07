@@ -1,5 +1,4 @@
-INSERT INTO clientes (nombre, saldo, activo) VALUES
-('Ana Pérez', 1500.75, TRUE),
-('Luis Gómez', 500.00, FALSE),
-('María López', 2300.50, TRUE),
-('Carlos Sánchez', 750.00, TRUE),
+INSERT INTO clientes (nombre, fecha_registro, activo, saldo) VALUES
+('Cliente 1', CURRENT_DATE, TRUE, 300.50),
+('Cliente 2', CURRENT_DATE, TRUE, 250.00),
+('Cliente 3', CURRENT_DATE, FALSE, 0.00);

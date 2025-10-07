@@ -1,1 +1,3 @@
-SELECT * FROM clientes WHERE activo = TRUE;
+SELECT nombre, saldo
+FROM clientes
+WHERE activo = TRUE; 

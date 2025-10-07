@@ -3,5 +3,5 @@ CREATE TABLE clientes (
   nombre VARCHAR(100) NOT NULL,
   fecha_registro DATE,
   activo BOOLEAN,
-  saldo DECIMAL(10,2)
+  saldo NUMERIC(10,2)
 );

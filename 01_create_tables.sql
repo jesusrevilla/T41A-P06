@@ -1,5 +1,9 @@
+
 CREATE TABLE clientes (
-  nombre VARCHAR(30) NOT NULL,
-  saldo NUMERIC(10,2) NOT NULL,
-  activo BOOLEAN NOT NULL
+    id SERIAL,
+    nombre VARCHAR(100),
+    fecha_registro DATE,
+    activo BOOLEAN,
+    saldo NUMERIC(10,2),
+    PRIMARY KEY (id)
 );

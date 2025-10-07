@@ -1,6 +1,6 @@
 CREATE TABLE clientes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100),
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
     fecha_registro DATE,
     activo BOOLEAN,
     saldo DECIMAL(10, 2)

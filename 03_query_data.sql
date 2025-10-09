@@ -1,24 +1,35 @@
--- a) Productos disponibles con información de marca (brand) en metadata
-SELECT id, name, price, metadata->>'brand' AS brand, available
-FROM data_types_demo
-WHERE available = TRUE
-  AND metadata ? 'brand';
- 
--- b) Artículos lanzados después de una fecha específica (ejemplo)
-SELECT id, name, launch_date
-FROM data_types_demo
-WHERE launch_date > DATE '2025-01-01'
-ORDER BY launch_date;
- 
--- c) Búsqueda por tag (ej. 'wifi')
-SELECT id, name, tags
-FROM data_types_demo
-WHERE tags @> ARRAY['wifi']::text[];
- 
--- d) Mostrar IP y dirección MAC
-SELECT id, name, ip_address::text AS ip, mac_address::text AS mac
-FROM data_types_demo;
- 
--- e) Mostrar coordenadas y sus componentes
-SELECT id, name, coordinates, x(coordinates) AS x, y(coordinates) AS y
-FROM data_types_demo;
+CREATE TABLE clientes (
+    codigo_del_cliente VARCHAR(50),
+    nombre_del_cliente TEXT,
+    PRIMARY KEY (codigo_del_cliente)
+);
+
+CREATE TABLE articulo (
+    codigo_del_articulo VARCHAR(50),
+    nombre_del_articulo TEXT,
+    precio_unitario NUMERIC(12,2),
+    PRIMARY KEY (codigo_del_articulo)
+);
+
+CREATE TABLE factura (
+    sucursal VARCHAR(50),
+    numero_de_factura INTEGER,
+    fecha_de_la_factura DATE,
+    forma_de_pago_factura TEXT,
+    codigo_del_cliente VARCHAR(50),
+    total_de_la_factura NUMERIC(14,2),
+    PRIMARY KEY (sucursal, numero_de_factura),
+    FOREIGN KEY (codigo_del_cliente) REFERENCES clientes(codigo_del_cliente)
+);
+
+CREATE TABLE detalle_de_factura (
+    sucursal VARCHAR(50),
+    numero_de_factura INTEGER,
+    codigo_de_articulo VARCHAR(50),
+    cantidad_del_articulo INTEGER,
+    precio_unitario_del_articulo NUMERIC(12,2),
+    subtotal_del_articulo NUMERIC(14,2),
+    PRIMARY KEY (sucursal, numero_de_factura, codigo_de_articulo),
+    FOREIGN KEY (sucursal, numero_de_factura) REFERENCES factura(sucursal, numero_de_factura),
+    FOREIGN KEY (codigo_de_articulo) REFERENCES articulo(codigo_del_articulo)
+);
